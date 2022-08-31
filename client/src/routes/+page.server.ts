@@ -11,5 +11,6 @@ export async function load(event: ServerLoadEvent) {
       name,
     };
   `)
+
   return users
 }
