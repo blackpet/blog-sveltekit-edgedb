@@ -1,0 +1,14 @@
+GET http://localhost:5201/hello
+Accept: application/json
+
+###
+
+GET http://localhost:5201/example
+Accept: application/json
+
+###
+
+GET http://localhost:5201/users
+Accept: application/json
+
+###
