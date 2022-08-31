@@ -8,10 +8,15 @@
   console.log('+page users', data.users)
 </script>
 
-<h1>Users</h1>
+<header>
+  <h1>Users</h1>
+  <div>
+    <a href="/users/form" class="btn">Create</a>
+  </div>
+</header>
 
 {#if data}
-<table class="table-auto">
+<table class="table-auto w-full">
   <thead>
   <tr>
     <th>id</th>

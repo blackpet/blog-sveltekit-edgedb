@@ -7,4 +7,17 @@
   th, td {@apply border border-slate-300 p-4;}
   thead th {@apply uppercase bg-slate-500 text-gray-50 border-slate-200 text-sm font-medium;}
   tbody tr:nth-child(2n) {@apply bg-slate-100;}
+
+  /* page header */
+  header {@apply flex justify-between items-center mb-2;}
+
+  /* form controls */
+  input[type='text'], input[type='password'] {@apply border rounded p-2;}
+}
+
+@layer components {
+  .btn {@apply border border-slate-400 px-4 py-2 rounded hover:bg-slate-100;}
+
+  /* form controls */
+  .field {@apply mb-2;}
 }
