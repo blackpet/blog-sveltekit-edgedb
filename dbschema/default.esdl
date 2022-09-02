@@ -1,12 +1,19 @@
 module default {
   type User {
-    required property login_id -> str {
-      constraint exclusive;
-    };
     required property email -> str {
       constraint exclusive;
     };
     required property name -> str;
+    required property password -> str {
+      default := '1234';
+      constraint min_len_value(4);
+    };
+    property created_at -> datetime {
+      default := datetime_current();
+    };
+    property last_modified_at -> datetime {
+      default := datetime_current();
+    };
   }
 
   type Post {

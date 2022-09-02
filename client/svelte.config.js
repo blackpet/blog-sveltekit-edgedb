@@ -10,7 +10,11 @@ const config = {
 	}),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		alias: {
+			'$api': 'src/api',
+			'$api/*': 'src/api/*',
+		}
 	}
 };
 
