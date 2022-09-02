@@ -1,6 +1,7 @@
-import { join } from 'path';
+import {join} from 'path';
 import AutoLoad, {AutoloadPluginOptions} from '@fastify/autoload';
-import { FastifyPluginAsync } from 'fastify';
+import {FastifyPluginAsync} from 'fastify';
+import {serializerCompiler, validatorCompiler} from 'fastify-type-provider-zod';
 
 export type AppOptions = {
   // Place your custom options for app below here.
@@ -11,6 +12,12 @@ const app: FastifyPluginAsync<AppOptions> = async (
     opts
 ): Promise<void> => {
   // Place here your custom code!
+
+  // Add schema validator and serializer
+  fastify.setValidatorCompiler(validatorCompiler)
+  fastify.setSerializerCompiler(serializerCompiler)
+
+
 
   // Do not touch the following lines
 
@@ -28,7 +35,6 @@ const app: FastifyPluginAsync<AppOptions> = async (
     dir: join(__dirname, 'routes'),
     options: opts
   })
-
 };
 
 export default app;

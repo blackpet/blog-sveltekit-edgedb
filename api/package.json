@@ -23,7 +23,9 @@
     "edgedb": "^0.22.1",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.3.0",
-    "fastify-plugin": "^4.0.0"
+    "fastify-plugin": "^4.0.0",
+    "fastify-type-provider-zod": "^1.1.4",
+    "zod": "^3.18.0"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
