@@ -19,8 +19,12 @@ module default {
   type Post {
     required property title -> str;
     required property content -> str;
-    required property created_at -> datetime;
-    required property last_modified_at -> datetime;
+    property created_at -> datetime {
+      default := datetime_current();
+    };
+    property last_modified_at -> datetime {
+      default := datetime_current();
+    };
 
     required link created_by -> User;
     required property read_count -> int64 {

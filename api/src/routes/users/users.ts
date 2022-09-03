@@ -14,13 +14,14 @@ const users: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
 
   fastify.get('/', async function (request, reply) {
     const users: User[] = await client.query(`
-    select User {
-      id,
-      email,
-      name,
-      created_at,
-      last_modified_at,
-    }`)
+      select User {
+        id,
+        email,
+        name,
+        created_at,
+        last_modified_at,
+      }
+    `)
 
     return users
   })

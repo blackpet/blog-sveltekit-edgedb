@@ -1,15 +1,15 @@
 <script lang="ts">
-  import type {User} from '$types/user';
   import {deleteUser_v1, saveUser_v1} from '$api/users';
   import {goto} from '$app/navigation'
   import {formatYmdhm} from "../utils/dayjs-util.js";
+  import type {User} from '$types/user';
 
-  export let data // for modify user
+  export let data // for modify auth
 
   let form: User = {...data}
 
   async function submit() {
-    const user = await saveUser_v1(form)
+    const auth = await saveUser_v1(form)
     // TODO: toast message
     await goto('/users')
   }

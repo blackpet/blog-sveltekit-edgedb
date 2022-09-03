@@ -57,14 +57,14 @@ async function deleteUser_v1(id: string) {
 }
 //------------- // client API (sveltekit server) -------------
 
-  export {
-    // server fns..
-    allUsers,
-    findUser,
-    saveUser,
-    deleteUser,
+export {
+  // server fns..
+  allUsers,
+  findUser,
+  saveUser,
+  deleteUser,
 
-    // client fns...
-    saveUser_v1,
-    deleteUser_v1,
-  }
+  // client fns...
+  saveUser_v1,
+  deleteUser_v1,
+}
