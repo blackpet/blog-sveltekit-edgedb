@@ -1,12 +1,11 @@
 <script lang="ts">
+  import {formatYmdhm} from "$lib/utils/dayjs-util.js";
   import type {User} from '$types/user';
-  import {formatYmdhm} from "../../lib/utils/dayjs-util.js";
 
   interface DataProps {
     users: User[]
   }
   export let data: DataProps
-  console.log('+page users', data.users)
 </script>
 
 <header>
@@ -30,13 +29,13 @@
     </thead>
 
     <tbody>
-    {#each data.users as user (user.id)}
+    {#each data.users as auth (auth.id)}
     <tr>
-      <td><a href="/users/{user.id}">{user.id}</a></td>
-      <td>{user.name}</td>
-      <td>{user.email}</td>
-      <td>{formatYmdhm(user.created_at)}</td>
-      <td>{formatYmdhm(user.last_modified_at)}</td>
+      <td><a href="/users/{auth.id}">{auth.id}</a></td>
+      <td>{auth.name}</td>
+      <td>{auth.email}</td>
+      <td>{formatYmdhm(auth.created_at)}</td>
+      <td>{formatYmdhm(auth.last_modified_at)}</td>
     </tr>
     {/each}
     </tbody>
