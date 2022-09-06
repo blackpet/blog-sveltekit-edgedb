@@ -12,15 +12,22 @@ const posts: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
         id,
         title,
         content,
+        status,
         read_count,
         created_at,
         last_modified_at,
         created_by: {
           id,
           name,
-        }
-      }
-    `)
+        },
+        like_count := count(.likes filter .type = 'Like'),
+        dislike_count := count(.likes filter .type = 'Dislike'),
+        my_like := (select .<post[is PostLike] {
+          id,
+          type
+        } filter .user.id = <uuid>$userId)
+      } order by .created_at desc
+    `, {userId: '05fbab58-28b6-11ed-b9ed-d3acf0fccf2a'}) // TODO signed userId bindging!
 
     return posts
   })
@@ -67,6 +74,7 @@ const posts: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   }
 
   async function updatePost(data: SavePostRequest) {
+    const {user_id, ...rest} = data
     const id = await client.querySingle<Post>(`
       update Post 
       filter .id = <uuid>$id
@@ -75,7 +83,7 @@ const posts: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
         content := <str>$content,
         last_modified_at := datetime_current(),
       }
-    `, data);
+    `, rest);
     console.log('POST updatePost /posts/ id', id)
     return id
   }
@@ -97,6 +105,7 @@ const posts: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
         id,
         title,
         content,
+        status,
         read_count,
         created_at,
         last_modified_at,
@@ -104,9 +113,22 @@ const posts: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
           id,
           name,
         },
+        likes: {
+          created_at,
+          type,
+          user: {
+            name
+          }
+        } order by .created_at desc,
+        like_count := count(.likes filter .type = 'Like'),
+        dislike_count := count(.likes filter .type = 'Dislike'),
+        my_like := (select .<post[is PostLike] {
+          id,
+          type
+        } filter .user.id = <uuid>$userId)
       }
       filter .id = <uuid>$id
-    `, {id})
+    `, {id, userId: '05fbab58-28b6-11ed-b9ed-d3acf0fccf2a'})
 
     return post
   })

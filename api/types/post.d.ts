@@ -9,4 +9,19 @@ export interface Post {
   created_by?: User
   created_at?: Date
   last_modified_at?: Date
+  likes?: PostLike
+  like_count?: number
+  dislike_count?: number
+  my_like?: [{
+    id: string
+    type: 'Like' | 'Dislike'
+  }]
+}
+
+export interface PostLike {
+  id?: string
+  post?: Post
+  user: User
+  type: 'Like' | 'Dislike'
+  created_at?: Date
 }

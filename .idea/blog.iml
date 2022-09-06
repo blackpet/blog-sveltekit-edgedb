@@ -4,7 +4,6 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/api/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/client/.svelte-kit" />
       <excludeFolder url="file://$MODULE_DIR$/api/.nyc_output" />
     </content>
     <orderEntry type="inheritedJdk" />
