@@ -2,7 +2,7 @@
 	"name": "client",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "vite dev --port 5273",
+		"dev": "vite dev --port 5273 --host 0.0.0.0",
 		"build": "svelte-kit sync && svelte-package",
 		"test": "playwright test",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

@@ -34,5 +34,21 @@ module default {
       constraint one_of('Draft', 'InReview', 'Published');
       default := 'Draft';
     }
+
+    multi link likes := (.<post[is PostLike]);
+    property like_count := count(.likes filter .type = 'Like');
+    property dislike_count := count(.likes filter .type = 'Dislike');
   }
+
+  type PostLike {
+    required link post -> Post;
+    required link user -> User;
+    required property type -> str {
+      constraint one_of('Like', 'Dislike');
+    };
+    property created_at -> datetime {
+      default := datetime_current();
+    };
+  }
+
 }

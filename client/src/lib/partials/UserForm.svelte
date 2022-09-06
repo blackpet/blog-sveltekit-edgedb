@@ -38,26 +38,28 @@
   </div>
 </header>
 
-<div class="field">
-  <label>name</label>
-  <input type="text" name="name" bind:value={form.name}>
-</div>
-<div class="field">
-  <label>email</label>
-  <input type="text" name="email" bind:value={form.email}>
-</div>
-<div class="field">
-  <label>password</label>
-  <input type="text" name="password" bind:value={form.password}>
-</div>
+<main>
+  <div class="field">
+    <label>name</label>
+    <input type="text" name="name" bind:value={form.name}>
+  </div>
+  <div class="field">
+    <label>email</label>
+    <input type="text" name="email" bind:value={form.email}>
+  </div>
+  <div class="field">
+    <label>password</label>
+    <input type="text" name="password" bind:value={form.password}>
+  </div>
 
-{#if data}
-<div class="field">
-  <label>created at</label>
-  {formatYmdhm(form.created_at)}
-</div>
-<div class="field">
-  <label>last modified at</label>
-  {formatYmdhm(form.last_modified_at)}
-</div>
-{/if}
+  {#if data}
+  <div class="field">
+    <label>created at</label>
+    {formatYmdhm(form.created_at)}
+  </div>
+  <div class="field">
+    <label>last modified at</label>
+    {formatYmdhm(form.last_modified_at)}
+  </div>
+  {/if}
+</main>

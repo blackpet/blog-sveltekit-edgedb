@@ -1,8 +1,8 @@
 import type {ServerLoadEvent} from '@sveltejs/kit'
-import {findUser} from '$api/users';
+import {findPost} from '$api/posts';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({params}: ServerLoadEvent) {
-  const user = await findUser(params.id!)
-  return {user}
+  const post = await findPost(params.id!)
+  return {post}
 }
