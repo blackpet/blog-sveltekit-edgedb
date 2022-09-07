@@ -96,7 +96,7 @@ async function deletePost(id: string) {
 }
 
 async function findPostLike(postId: string) {
-  const like = await client.querySingle<PostLike>(`
+  const like = await client.query<PostLike>(`
     select PostLike {
       id,
       type
@@ -105,7 +105,7 @@ async function findPostLike(postId: string) {
     and .user.id = <uuid>$userId
   `, {postId, userId: '05fbab58-28b6-11ed-b9ed-d3acf0fccf2a'})
 
-  return like;
+  return like?.[0];
 }
 
 async function updatePostLikeType(id: string, type: string) {
