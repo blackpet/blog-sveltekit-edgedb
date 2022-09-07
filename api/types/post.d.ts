@@ -1,4 +1,5 @@
 import {User} from './user';
+import {PostLikeType} from '../src/lib/enums';
 
 export interface Post {
   id?: string
@@ -14,14 +15,14 @@ export interface Post {
   dislike_count?: number
   my_like?: [{
     id: string
-    type: 'Like' | 'Dislike'
+    type: PostLikeType
   }]
 }
 
 export interface PostLike {
   id?: string
   post?: Post
-  user: User
-  type: 'Like' | 'Dislike'
+  user?: User
+  type: PostLikeType
   created_at?: Date
 }

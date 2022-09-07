@@ -1,0 +1,12 @@
+#사용자 등록
+POST http://localhost:5201/posts/ccc7c6e2-2dd7-11ed-81fa-2bbbb295a960
+Content-Type: application/json
+Accept: application/json
+
+{
+  "login_id": "a9",
+  "name": "b9",
+  "email": "c9"
+}
+
+###

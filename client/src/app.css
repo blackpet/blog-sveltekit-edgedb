@@ -18,6 +18,8 @@
 @layer components {
   .btn {@apply border border-slate-400 px-4 py-2 rounded hover:bg-slate-100;}
 
+  .link {@apply cursor-pointer;}
+
   /* form controls */
   .field {@apply mb-2;}
 }
