@@ -85,6 +85,8 @@ const posts: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
     } else {
       await insertPostLike(id, type)
     }
+
+    return {result: 'ok'}
   });
 
   /**
