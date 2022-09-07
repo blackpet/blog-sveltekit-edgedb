@@ -4,7 +4,7 @@ import {savePost} from '$api/posts';
 /** @type {import('./$types').RequestHandler} */
 export async function POST({request}: RequestEvent) {
   const body = await request.json()
-  const post = await savePost(body)
+  const postId = await savePost(body)
 
-  return new Response(JSON.stringify(post))
+  return new Response(JSON.stringify(postId))
 }

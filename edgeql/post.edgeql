@@ -1,3 +1,5 @@
+
+// @deprecated
 select Post {
   id,
   content,
@@ -22,7 +24,7 @@ select Post {
   } filter .user.id = <uuid>'05fbab58-28b6-11ed-b9ed-d3acf0fccf2a')
 }
 
-
+// @final !!!
 select Post {
   id,
   content,
@@ -67,11 +69,30 @@ select Post {
   dislike_count,
   my_like := (select PostLike {
     type
-  } filter .user.id = <uuid>'05fbab58-28b6-11ed-b9ed-d3acf0fccf2a')
+  } filter .user.id = <uuid>'05fbab58-28b6-11ed-b9ed-d3acf0fccf2a')   <------------- 실패!! (joined data 아님)
 }
 
 insert PostLike {
   post := (select Post filter = .id = <uuid>'22239f6c-2dc9-11ed-b38d-3be5bb6b969a'),
   user := (select User filter = .id = <uuid>'32662490-2ab2-11ed-bf95-2f710f6bccda'),
   type := 'Like'
+}
+
+
+with my_like := (
+  select PostLike {id, type}
+  filter .post.id = <uuid>'22239f6c-2dc9-11ed-b38d-3be5bb6b969a'
+  and .user.id = <uuid>'05fbab58-28b6-11ed-b9ed-d3acf0fccf2a'
+)
+select <str>'exists' if exists my_like
+else (select <str>'nono')
+
+
+with MyLike := (
+  select PostLike {id, type}
+  filter .post.id = <uuid>'22239f6c-2dc9-11ed-b38d-3be5bb6b969a'
+  and .user.id = <uuid>'05fbab58-28b6-11ed-b9ed-d3acf0fccf2a'
+)
+select MyLike {
+  id, type
 }

@@ -6,7 +6,6 @@
     posts: Post[]
   }
   export let data: DataProps
-  console.log('+page posts', data.posts)
 </script>
 
 <header>
